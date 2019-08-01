@@ -9,8 +9,8 @@
  * Time complexity: O(1)
  * Space complexity: O(1)
  *
- * Problems: The low precision of type double makes the program work
- * only for the first 60ish terms.
+ * Pro: O(1) time and space complexity
+ * Con: The low precision of type double makes the program work only for the first 60ish terms.
  *
  * Compile: gcc -lm fibonacci-formula.c
  */
