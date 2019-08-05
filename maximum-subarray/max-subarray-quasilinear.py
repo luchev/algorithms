@@ -4,6 +4,16 @@ def maxsubarray(list):
     return maxsubarrayRecursive(list, 0, len(list) - 1)
 
 def maxsubarrayRecursive(list, start, end):
+    """
+    Calculate the max subarray in the left half (recursion)
+    Calculate the max subarray in the right half (recursion)
+    Calculate the maxsubarray crossing the middle
+    Pick the best of the 3
+
+    Complexity (n = length of input)
+    Time complexity: O(nlogn)
+    Space complexity: O(logn)
+    """
     if start - end == 0:
         return (list[start], start, end)
     
@@ -19,9 +29,18 @@ def maxsubarrayRecursive(list, start, end):
         return right
 
 def maxsubarrayMid(list, start, mid, end):
+    """
+    Find the max subarray that crosses the mid point given
+    Do this by naively finding the max subarray on the left side
+    ending at position mid, and finding the max subarray on the 
+    right side starting at position mid
+
+    Time complexity: O(length if input)
+    """
     leftMaxSum = -math.inf
     leftSum = 0
     leftIndex = mid
+    # Find the left max subarray ending at mid
     for i in range(mid, start - 1, -1):
         leftSum += list[i]
         if leftSum > leftMaxSum:
@@ -31,12 +50,15 @@ def maxsubarrayMid(list, start, mid, end):
     rightMaxSum = -math.inf
     rightSum = 0
     rightIndex = mid
+    # Find the right max subarray starting at mid
     for i in range(mid + 1, end + 1):
         rightSum += list[i]
         if rightSum > rightMaxSum:
             rightMaxSum = rightSum
             rightIndex = i
     
+    # Security checks in case there was no left/right subarray
+    # This is for the edge cases when we have odd number of elements
     maxSum = 0
     if leftMaxSum != -math.inf:
         maxSum += leftMaxSum

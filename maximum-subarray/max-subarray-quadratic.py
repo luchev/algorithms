@@ -1,4 +1,12 @@
 def maxsubarray(list):
+    """
+    Naive approach to calculating max subarray
+    Iterating all possible subarrays
+
+    Complexity (n = list size)
+    Time complexity: O(n^2)
+    Space complexity: O(1)
+    """
     maxStart = 0
     maxEnd = 0
     maxSum = list[0]
