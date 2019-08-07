@@ -30,10 +30,10 @@ class matrix:
         return out
 
     def __str__(self):
-        output = "[\n"
+        output = "-----\n"
         for i in range(self.rows):
             output += str(self.data[i]) + "\n"
-        return output + "]"
+        return output + "-----"
 
     def compareDimensions(self, other):
         return self.rows == other.rows and self.cols == other.cols
