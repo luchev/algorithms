@@ -1,6 +1,12 @@
 from matrix import *
 
 def multiply(matrix1, matrix2):
+    """
+    Multiply 2 matrices naively
+    
+    Complexity (n = matrix rows/cols)
+    Time complexity: O(n^3)
+    """
     if not matrix1.canMultiply(matrix2):
         return matrix(0, 0)
     out = matrix(matrix1.rows, matrix2.cols)
