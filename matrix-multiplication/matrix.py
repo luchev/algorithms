@@ -29,6 +29,17 @@ class matrix:
                 out.data[i][j] = self.data[i][j] + other.data[i][j]
         return out
 
+    def __sub__(self, other):
+        if self.rows != other.rows or self.cols != other.cols:
+            return self
+        
+        out = matrix(self.rows, self.cols)
+
+        for i in range(self.rows):
+            for j in range(self.cols):
+                out.data[i][j] = self.data[i][j] - other.data[i][j]
+        return out
+
     def __str__(self):
         output = "-----\n"
         for i in range(self.rows):
@@ -54,6 +65,7 @@ class matrix:
                 self.data[i][j] = 0
     
     def fillToSquare(self):
+        "Make the matrix dimensions 2^n x 2^n filling the new rows/cols with zeros"
         size = 1
         while size < self.rows and size < self.cols:
             size <<= 1
