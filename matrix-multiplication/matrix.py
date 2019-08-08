@@ -53,3 +53,44 @@ class matrix:
             for j in range(self.cols):
                 self.data[i][j] = 0
     
+    def fillToSquare(self):
+        size = 1
+        while size < self.rows and size < self.cols:
+            size <<= 1
+        
+        for i in range(0, self.rows):
+            for _ in range(size - self.cols):
+                self.data[i].append(0)
+
+        for i in range(size - self.rows):
+            row = []
+            for _ in range(size):
+                row.append(0)
+            self.data.append(row)
+
+        self.rows = size
+        self.cols = size
+    
+    def removeEmptyRows(self):
+        for row in range(self.rows - 1, 0, -1):
+            for col in range(self.cols):
+                if self.data[row][col] != 0:
+                    return
+
+            del self.data[-1]
+            self.rows -= 1
+
+    def removeEmptyCols(self):
+        for col in range(self.cols - 1, 0, -1):
+            for row in range(self.rows):
+                if self.data[row][col] != 0:
+                    return
+            
+            for row in range(self.rows):
+                del self.data[row][-1]
+            self.cols -= 1
+
+    def removeEmptyCells(self):
+        self.removeEmptyRows()
+        self.removeEmptyCols()
+            
