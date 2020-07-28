@@ -1,2 +1,1 @@
-# algorithms
-Random algorithms for practice purposes
+# Algorithms
